@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👁️</title>
+    <link rel="stylesheet" href="./page1.css">
+</head>
+<body>
+<div class="eye"  onmouseover="startRedirect()" onmouseleave="stopRedirect()">
+    <div class="image"></div>
+    <div class="shut">
+        <span></span>
+    </div > 
+    <div class="pupil">
+
+    </div>
+</div>
+
+</body>
+
+<!-- Div para carregar os ícones das redes sociais -->
+<div id="social-icons-container"></div>
+
+    
+ 
+<div class="text-container">
+    <iframe src="/text glich.html" frameborder="0"></iframe>
+</div>
+    
+
+<script>
+    fetch('social-icons.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('social-icons-container').innerHTML = data;
+        });
+</script>
+
+
+<script src="./page1.js"></script>
+</html>

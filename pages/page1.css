@@ -1,0 +1,201 @@
+@keyframes lookAround {
+    0% {
+        transform: translate(0, 0); /* Centro */
+    }
+    15% {
+        transform: translate(-25px, -25px); /* Canto superior esquerdo, mais distante */
+    }
+    30% {
+        transform: translate(30px, -30px); /* Canto superior direito, mais distante */
+    }
+    45% {
+        transform: translate(-30px, 30px); /* Canto inferior esquerdo, mais distante */
+    }
+    60% {
+        transform: translate(25px, 25px); /* Canto inferior direito, mais distante */
+    }
+    75% {
+        transform: translate(-20px, 10px); /* Posição mais aleatória */
+    }
+    90% {
+        transform: translate(15px, -20px); /* Outra posição mais aleatória */
+    }
+    100% {
+        transform: translate(0, 0); /* Retorna ao centro */
+    }
+}
+
+@keyframes lookAroundExtended {
+    0% {
+        transform: translate(0, 0); /* Centro */
+    }
+    20% {
+        transform: translate(35px, -35px); /* Canto superior direito, ainda mais distante */
+    }
+    40% {
+        transform: translate(-35px, 35px); /* Canto inferior esquerdo, ainda mais distante */
+    }
+    60% {
+        transform: translate(30px, 30px); /* Canto inferior direito, ainda mais distante */
+    }
+    80% {
+        transform: translate(-30px, -30px); /* Canto superior esquerdo, ainda mais distante */
+    }
+    100% {
+        transform: translate(0, 0); /* Retorna ao centro */
+    }
+}
+
+@keyframes glitch-anim-1 {
+    0% {
+        clip-path: polygon(0 0%, 100% 0%, 100% 5%, 0 5%);
+    }
+    25% {
+        clip-path: polygon(0 10%, 100% 10%, 100% 15%, 0 15%);
+    }
+    50% {
+        clip-path: polygon(0 5%, 100% 5%, 100% 20%, 0 20%);
+    }
+    75% {
+        clip-path: polygon(0 0%, 100% 0%, 100% 10%, 0 10%);
+    }
+    100% {
+        clip-path: polygon(0 0%, 100% 0%, 100% 5%, 0 5%);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
+    }
+    25% {
+        clip-path: polygon(0 20%, 100% 20%, 100% 35%, 0 35%);
+    }
+    50% {
+        clip-path: polygon(0 10%, 100% 10%, 100% 25%, 0 25%);
+    }
+    75% {
+        clip-path: polygon(0 15%, 100% 15%, 100% 25%, 0 25%);
+    }
+    100% {
+        clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
+    }
+}
+
+@keyframes glitch-anim-flash {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.glitch {
+    position: relative;
+    overflow: hidden;
+}
+
+.glitch::before,
+.glitch::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    animation: glitch-anim-1 2s infinite linear alternate,
+               glitch-anim-2 2.5s infinite linear alternate,
+               glitch-anim-flash 1s infinite linear;
+}
+
+.glitch::after {
+    animation-delay: 0.5s;
+}
+
+body {
+    margin: 0%;
+    padding: 0%;
+    background: #333;
+}
+
+.eye {
+    width: 200px;
+    height: 200px;
+    background: #800000; /* Cor de fundo vermelho */
+    background-repeat: no-repeat; /* Não repetir a imagem */
+    background-position: center; /* Centraliza a imagem */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-radius: 75% 0;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.pupil {
+    width: 100%;
+    height: 100%;
+    background-image: url("https://github-readme-stats.vercel.app/api/pin/?username=samngueds&repo=Script-Comandos-de-Push-prontos&bg_color=800000&border_color=800000&show_icons=true&icon_color=FFFAF0&title_color=FFFFFF&text_color=FFF");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transform: translate(-50%, -50%) rotate(45deg);
+    rotate: 315deg;
+    pointer-events: none;
+    animation: lookAround 10s infinite alternate ease-in-out;
+}
+
+.pupil.lookAround {
+    animation: lookAroundExtended 15s infinite alternate ease-in-out; /* Aplica a animação estendida */
+}
+
+.pupil.mouse-active {
+    animation: none; /* Desativa a animação quando a classe mouse-active é adicionada */
+}
+
+.shut {
+    width: 300px;
+    height: 170px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(-45deg);
+    z-index: 999;
+}
+
+.shut span {
+    display: block;
+    width: 100%;
+    height: 0%;
+    background: #333;
+    border-radius: 0 0 60% 60%;
+    transition: 0.4s all;
+}
+
+.eye:hover > .shut span {
+    height: 100%;
+}
+
+.text-container {
+    margin-top: 500px; /* Ajuste conforme necessário */
+    margin-right: 440px;
+    margin-left: 440px;
+}
+
+.text-container iframe {
+    width: 1000px; /* Ajuste o tamanho conforme necessário */
+    height: 200px; /* Ajuste o tamanho conforme necessário */
+    border: none;
+}
